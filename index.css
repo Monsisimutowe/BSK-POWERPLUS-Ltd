@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Segoe UI', sans-serif;
     line-height: 1.6;
@@ -17,6 +18,7 @@ body {
     top: 0;
     z-index: 100;
 }
+
 .navbar_container {
     display: flex;
     justify-content: space-between;
@@ -24,30 +26,36 @@ body {
     max-width: 1100px;
     margin: auto;
 }
+
 #navbar__logo {
     color: #fff;
     font-size: 1.5rem;
     text-decoration: none;
     font-weight: bold;
 }
+
 .navbar__menu {
     list-style: none;
     display: flex;
     gap: 1rem;
 }
+
 .navbar__links {
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
 }
+
 .navbar__links:hover {
     color: #ffcc00;
 }
+
 .navbar__toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
+
 .bar {
     height: 3px;
     width: 25px;
@@ -55,6 +63,7 @@ body {
     margin: 4px 0;
 }
 
+/* Hero Section */
 .hero {
     background: url('images/bsk.jpg') no-repeat center center/cover;
     height: 90vh;
@@ -65,19 +74,26 @@ body {
     text-align: center;
     position: relative;
 }
+
 .hero::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
 }
+
 .hero-content {
     position: relative;
     z-index: 1;
 }
+
 .hero h1 {
     font-size: 2.5rem;
 }
+
 .hero-btn {
     margin-top: 1rem;
     display: inline-block;
@@ -89,12 +105,14 @@ body {
     font-weight: bold;
 }
 
+/* About, Services, and Contact Section */
 .about, .contact {
     padding: 3rem 1rem;
     max-width: 900px;
     margin: auto;
     text-align: center;
 }
+
 .about h2, .services h2, .contact h2 {
     color: #002f6c;
     margin-bottom: 1rem;
@@ -104,12 +122,14 @@ body {
     background-color: #fff;
     padding: 3rem 1rem;
 }
+
 .service-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
 }
+
 .card {
     background-color: #f4f4f4;
     padding: 1.5rem;
@@ -137,10 +157,14 @@ body {
     margin-top: 2rem;
 }
 
+/* Mobile Media Query */
 @media (max-width: 768px) {
+    /* Navbar hamburger toggle button */
     .navbar__toggle {
         display: flex;
     }
+
+    /* Navbar menu - hidden by default */
     .navbar__menu {
         display: none;
         flex-direction: column;
@@ -150,30 +174,28 @@ body {
         top: 60px;
         left: 0;
         text-align: center;
+        gap: 1rem;
     }
+
+    /* When the menu has the 'active' class, it becomes visible */
     .navbar__menu.active {
         display: flex;
     }
+
+    /* Hamburger bar styles */
+    .navbar__toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #fff;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* Navbar links in mobile layout */
+    .navbar__menu li {
+        padding: 1rem 0;
+    }
 }
-
-/* Basic hamburger bar styling */
-.navbar__toggle .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #333;
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-  
-  /* Hide menu on small screens */
-  .navbar__menu {
-    display: flex;
-    list-style: none;
-    gap: 1rem;
-  }
-  
-
-  
 

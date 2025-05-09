@@ -16,7 +16,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <ul class="navbar__menu">
+            <ul class="navbar__menu" id="navbar-menu">
                 <li><a href="bsk.html" class="navbar__links">About</a></li>
                 <li><a href="services.html" class="navbar__links">Services</a></li>
                 <li><a href="#contact" class="navbar__links">Contact</a></li>
@@ -24,6 +24,7 @@
             </ul>
         </div>
     </nav>
+
     <header class="hero">
         <div class="hero-content">
             <h1>Welcome to BSK Power Plus Zambia Ltd</h1>
@@ -65,6 +66,16 @@
         <p>&copy; 2025 BSK Power Plus Zambia Ltd. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbarMenu = document.getElementById('navbar-menu');
+    
+        mobileMenu.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+    </script>
+    
+
+   
 </body>
 </html>
