@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+    <h1>Checkout</h1>
+    <div id="checkout-items"></div>
+    <h2 id="total"></h2>
+
+    <div id="paypal-button-container"></div>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AY4Rfwz1byNwvDvQKd1dmTetLMyEUk5VvZGMsV9qmWEfMhk5kZ3jwt2oXgca8xdldhbksvvr2FIPbXUN&currency=USD"></script>
+
+    <script>
+        const items = JSON.parse(localStorage.getItem('cart')) || [];
+        const container = document.getElementById('checkout-items');
+        let total = 0;
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.innerText = `${item.name} - ${item.price}`;
+            container.appendChild(div);
+
+            total += parseFloat(item.price.replace(/[^0-9.-]+/g,""));
+        });
+
+        document.getElementById('total').innerText = `Total: $${total.toFixed(2)}`;
+
+        if (typeof paypal !== 'undefined') {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: total.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                        localStorage.removeItem('cart');
+                        window.location.href = 'thank-you.html';
+                    });
+                }
+            }).render('#paypal-button-container');
+        } else {
+            console.error('PayPal SDK failed to load.');
+        }
+    </script>
+</body>
+</html>

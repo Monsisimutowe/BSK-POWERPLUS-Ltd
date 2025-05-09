@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spare Parts Store</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+
+    <h1>Spare Parts Store</h1>
+
+    <div id="cart">
+        🛒 Cart: <span id="cart-count">0</span> items
+    </div>
+
+<div class="products-container">
+
+    <div class="product">
+        <img src="images/brakepads.png" alt="Brake Pad" width="300">
+        <h2>Brake Pad - Model XZ123</h2>
+        <p>Price: $49.99</p>
+        <p>Fits: Honda Accord 2010-2015</p>
+        <p>SKU: BP-XZ123</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/oil filter.png" alt="Oil Filter" width="300">
+        <h2>Oil Filter - OF234</h2>
+        <p>Price: $19.99</p>
+        <p>Fits: Toyota Corolla 2015-2020</p>
+        <p>SKU: OF-234</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/sparkplug.png" alt="Spark Plug">
+        <h2>Spark Plug - SP556</h2>
+        <p>Price: $9.99</p>
+        <p>Fits: Ford Focus 2012-2018</p>
+        <p>SKU: SP-556</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/carbattery.png" alt="Car Battery">
+        <h2>Car Battery - CB7000</h2>
+        <p>Price: $129.99</p>
+        <p>Fits: Universal 12V</p>
+        <p>SKU: CB-7000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/airfilter.png" alt="Air Filter">
+        <h2>Air Filter - AF800</h2>
+        <p>Price: $29.99</p>
+        <p>Fits: Nissan Altima 2015-2020</p>
+        <p>SKU: AF-800</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/headlight.png" alt="Headlights">
+        <h2>Headlights - HL900</h2>
+        <p>Price: $89.99</p>
+        <p>Fits: Chevrolet Cruze 2011-2016</p>
+        <p>SKU: HL-900</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+
+</div>
+
+<script>
+    let cartCount = 0;
+    let cartItems = [];
+
+    function addToCart(button) {
+        const product = button.closest('.product');
+        const name = product.querySelector('h2').innerText;
+        const price = product.querySelector('p').innerText;
+        const sku = product.querySelectorAll('p')[2].innerText;
+
+        cartItems.push({ name, price, sku });
+        cartCount++;
+        document.getElementById('cart-count').innerText = cartCount;
+    }
+
+    function goToCheckout() {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        window.location.href = 'checkout.html';
+    }
+</script>
+
+<button onclick="goToCheckout()">Proceed to Checkout</button>
+<a href="home.html" class="hero-btn">Go back to home page</a>
+
+</body>
+</html>
+
