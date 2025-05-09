@@ -156,5 +156,24 @@ body {
     }
 }
 
+/* Basic hamburger bar styling */
+.navbar__toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hide menu on small screens */
+  .navbar__menu {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+  }
+  
+
   
 
